@@ -1,5 +1,5 @@
 EXPERIMENT=1
-DIR=~/cyberpunk_bestiary/1029
+DIR=~/src/bestiary/studies/1127
 IMAGES_DIR=$DIR/images
 STYLES_DIR=$DIR/styles
 OUT_DIR=$DIR/output
