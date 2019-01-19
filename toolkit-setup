@@ -23,6 +23,8 @@
 # export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64
 # python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
 
+# sudo apt-mark hold libcudnn7
+
 #-----------------------------------------------------------------------
 # torch7
 #-----------------------------------------------------------------------
