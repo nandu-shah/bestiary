@@ -1,4 +1,4 @@
-DIR=~/src/bestiary/studies/0322-1
+DIR=$(dirname $(dirname $0))
 IMAGES_DIR=$DIR/images
 STYLES_DIR=$DIR/styles
 OUT_DIR=$DIR/output
