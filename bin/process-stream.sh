@@ -30,6 +30,9 @@ do
     echo "---- $img  $style  $slwe  $cwb  $iter $preserve_marker"
     perl ~/src/toys-n-tools/gpu_temp_throttle.pl $cmd | pv -ls $((iter + 5)) >> $DIR/run.log
 
-    echo sleeping 60s
-    sleep 60
+    if [[ -n "$SLEEP" ]]
+    then
+	echo sleeping ${SLEEP}s
+	sleep $SLEEP
+    fi
 done < $QUEUE
