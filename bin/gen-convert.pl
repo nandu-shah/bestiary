@@ -6,19 +6,32 @@ use warnings;
 use Getopt::Std;
 
 my %opts;
-getopts('fn:', \%opts);
+getopts('fn:w:h:', \%opts);
 
-die "provide dimension with -n\n" unless defined $opts{n};
-my $n = $opts{n};
+die "provide dimension with -n or combination of -w and -h\n"
+  if defined $opts{n} and (defined $opts{w} or defined $opts{h});
+
+die "provide dimension with -n or combination of -w and -h\n"
+  unless defined $opts{n} xor (defined $opts{w} and defined $opts{h});
+
+my($w, $h);
+if (defined $opts{n}) {
+  $w = $h = $opts{n};
+}
+
+else {
+  $w = $opts{w};
+  $h = $opts{h};
+}
 
 my $dir = defined $opts{f} ? '$FEATHERED_DIR' : '$TILES_DIR';
 
 print 'convert ';
 print "-background transparent \\\n\t" if defined $opts{f};
-for (my $i = 0; $i < $n; $i++) {
+for (my $i = 0; $i < $h; $i++) {
   print '\\( ';
-  for (my $j = 0; $j < $n; $j++) {
-    my $k = $i * $n + $j;
+  for (my $j = 0; $j < $w; $j++) {
+    my $k = $i * $w + $j;
     print $dir, '/$IMAGE_NAME', "'_$k.png' \\\n\t";
   }
 
